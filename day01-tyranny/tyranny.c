@@ -11,7 +11,7 @@ gint calculate_fuel(gint weight, gboolean include_fuel) {
     return additional_weight;
 }
 
-int main(gint argc, gchar *argv[]) {
+gint main(gint argc, gchar *argv[]) {
     gboolean include_fuel = FALSE;
 
     g_autoptr(GString) include_fuel_argument = g_string_new("--include-fuel");
