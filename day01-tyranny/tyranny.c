@@ -1,7 +1,5 @@
 #include <glib.h>
-
 #include <stdio.h>
-#include <string.h>
 
 gint calculate_fuel(gint weight, gboolean include_fuel) {
     gint additional_weight = MAX(weight / 3 - 2, 0);
@@ -16,8 +14,12 @@ gint calculate_fuel(gint weight, gboolean include_fuel) {
 int main(gint argc, gchar *argv[]) {
     gboolean include_fuel = FALSE;
 
+    g_autoptr(GString) include_fuel_argument = g_string_new("--include-fuel");
+
     for(gint i = 0; i < argc; i++) {
-        if(strcmp(argv[i], "--include-fuel") == 0) {
+        g_autoptr(GString) argument = g_string_new(argv[i]);
+
+        if(g_string_equal(argument, include_fuel_argument)) {
             include_fuel = TRUE;
         }
     }
