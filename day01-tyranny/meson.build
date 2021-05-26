@@ -1,2 +1,3 @@
-math_dep = cc.find_library('m', required: true)
-executable('tyranny', 'tyranny.c', install: true, dependencies : math_dep)
+glib = dependency('glib-2.0')
+
+executable('tyranny', 'tyranny.c', install: true, dependencies: glib)

@@ -1,9 +1,10 @@
-#include <math.h>
+#include <glib.h>
+
 #include <stdio.h>
 #include <string.h>
 
 int calculate_recursive_fuel(int fuel) {
-    int additional_fuel = fmax(fuel / 3 - 2, 0);
+    int additional_fuel = MAX(fuel / 3 - 2, 0);
 
     if(additional_fuel > 0) {
         additional_fuel += calculate_recursive_fuel(additional_fuel);
@@ -28,13 +29,11 @@ int main(int argc, char *argv[]) {
         int num_scanned = scanf("%d", &mass);
 
         if(num_scanned >= 0) {
-            int fuel_required = fmax(mass / 3 - 2, 0);
+            int fuel_required = MAX(mass / 3 - 2, 0);
 
             if(include_fuel) {
                 fuel_required += calculate_recursive_fuel(fuel_required);
             }
-
-            printf("%d\n", fuel_required);
 
             total_fuel_required += fuel_required;
         } else {
